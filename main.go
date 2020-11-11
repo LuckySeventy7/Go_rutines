@@ -11,7 +11,7 @@ type proceso struct {
 	i     chan uint64
 	done  chan bool
 	
-}gi
+}
 
 func (p *proceso) start() {
 	var i uint64 = 0
@@ -80,15 +80,15 @@ func main() {
 				var a int
 				fmt.Print("ID que quiere eliminar: ")
 				fmt.Scan(&a)
-				var element *proceso
-				for idx, e := range s {
-					if e.id == a {
-						element = &e
-						s = append(s[:idx], s[idx+1:]...)
+				var node *proceso
+				for i, j := range s {
+					if j.id == a {
+						node = &j
+						s = append(s[:i], s[i+1:]...)
 						break
 					}
 				}
-				element.done <- false
+				node.done <- false
 			case "3":
 				
 				var input string
